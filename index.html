@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nettoyage Express – Parce que votre temps est précieux</title>
+  <meta name="description" content="Nettoyage Express à Bruxelles : sociétés, après chantier, semi-industriel. Pas de particuliers." />
+
+  <!-- CSS en premier -->
+  <link rel="stylesheet" href="styles.css?v=6" />
+
+  <!-- Preconnect utiles -->
+  <link rel="preconnect" href="https://formspree.io" crossorigin>
+
+  <!-- Preload LCP -->
+  <link rel="preload" as="image" href="images/hero-1600.avif"
+        imagesrcset="images/hero-1200.avif 1200w, images/hero-1600.avif 1600w, images/hero-2000.avif 2000w"
+        imagesizes="100vw" type="image/avif">
+  <link rel="preload" as="image" href="images/logo.avif" type="image/avif">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <nav class="nav-left nav-links">
+      <a href="index.html#accueil" class="active">Accueil</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <a href="index.html#accueil" class="nav-logo" aria-label="Nettoyage Express">
+      <picture>
+        <source srcset="images/logo.avif" type="image/avif">
+        <source srcset="images/logo.webp" type="image/webp">
+        <img src="images/logo.webp" alt="Logo Nettoyage Express" width="140" height="60" />
+      </picture>
+    </a>
+
+    <div class="nav-right">
+      <a class="nav-phone" href="tel:+3224110911">+32&nbsp;2&nbsp;411&nbsp;09&nbsp;11</a>
+    </div>
+  </header>
+
+  <!-- ACCUEIL -->
+  <section id="accueil" class="hero section">
+    <!-- CTA centré -->
+    <div class="hero-center">
+      <a href="index.html#services" class="cta-button">Découvrir nos services</a>
+    </div>
+
+    <!-- Slogan en bas à gauche -->
+    <h1 class="slogan">PARCE QUE VOTRE TEMPS EST PRÉCIEUX</h1>
+
+    <!-- Image de fond -->
+    <picture class="hero-bg" aria-hidden="true">
+      <source type="image/avif"
+        srcset="images/hero-1200.avif 1200w, images/hero-1600.avif 1600w, images/hero-2000.avif 2000w"
+        sizes="100vw">
+      <source type="image/webp"
+        srcset="images/hero-1200.webp 1200w, images/hero-1600.webp 1600w, images/hero-2000.webp 2000w"
+        sizes="100vw">
+      <img src="images/hero-1600.webp" alt="" loading="eager" fetchpriority="high" decoding="async">
+    </picture>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="reservation-page section-compact">
+      <h2 class="page-title">Nos services</h2>
+
+      <div class="cards cards-3">
+        <!-- Sociétés -->
+        <article class="card">
+          <picture>
+            <source srcset="images/societe.avif" type="image/avif">
+            <source srcset="images/societe.webp" type="image/webp">
+            <img src="images/societe.webp" alt="Nettoyage de sociétés : bureaux, commerces, showrooms, cliniques, écoles" loading="lazy" width="900" height="600">
+          </picture>
+          <h3>Nettoyage de sociétés</h3>
+          <p>Bureaux, commerces, showrooms, cliniques & écoles. Entretien régulier, sols, vitres intérieures, protocoles adaptés.</p>
+          <button onclick="openDrawer()">Demander un devis</button>
+        </article>
+
+        <!-- Après chantier -->
+        <article class="card">
+          <picture>
+            <source srcset="images/chantier.avif" type="image/avif">
+            <source srcset="images/chantier.webp" type="image/webp">
+            <img src="images/chantier.webp" alt="Nettoyage après chantier" loading="lazy" width="900" height="600">
+          </picture>
+          <h3>Après chantier</h3>
+          <p>Remise en état : poussières fines, résidus, traces de plâtre/peinture, lavage de vitres et finitions.</p>
+          <button onclick="openDrawer()">Demander un devis</button>
+        </article>
+
+        <!-- Semi-industriel -->
+        <article class="card">
+          <picture>
+            <source srcset="images/indu.avif" type="image/avif">
+            <source srcset="images/indu.webp" type="image/webp">
+            <img src="images/indu.webp" alt="Nettoyage semi-industriel" loading="lazy" width="900" height="600">
+          </picture>
+          <h3>Semi-industriel</h3>
+          <p>Ateliers & petites unités : entretien renforcé des zones techniques, dégraissage, consignes de sécurité.</p>
+          <button onclick="openDrawer()">Demander un devis</button>
+        </article>
+      </div>
+
+      <p class="notice centered" style="margin-top:8px">(Important : nous ne faisons pas de nettoyage pour les particuliers)</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="reservation-page section-compact-below">
+      <h2 class="page-title">Contact</h2>
+
+      <div class="contact-grid contact-grid-image">
+        <div class="contact-illustration">
+          <picture>
+            <source srcset="images/contact.avif" type="image/avif">
+            <source srcset="images/contact.webp" type="image/webp">
+            <img src="images/contact.webp" alt="Contact Nettoyage Express à Bruxelles" loading="lazy" width="1200" height="800">
+          </picture>
+        </div>
+
+        <form action="https://formspree.io/f/your-id-here" method="POST" class="contact-form" autocomplete="on" data-formspree>
+          <label>Nom / Société*</label>
+          <input type="text" name="company" required>
+          <label>Email*</label>
+          <input type="email" name="email" required>
+          <label>Téléphone</label>
+          <input type="tel" name="phone">
+          <label>Message*</label>
+          <textarea name="message" rows="6" required placeholder="Décrivez votre besoin : type de locaux, surface, fréquence souhaitée…"></textarea>
+          <button type="submit">Envoyer la demande</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p><strong>Nettoyage Express</strong> — Rue des Colombophiles, 133 • 1070 Bruxelles</p>
+      <p>Tel : <a href="tel:+3224110911">+32 2 411 09 11</a> • <a href="https://www.nettoyageexpress.be" target="_blank" rel="noopener">www.nettoyageexpress.be</a></p>
+      <p class="legal">
+        <a href="mentions-legales.html">Mentions légales</a> •
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- BOUTON FLOTTANT → FORMULAIRE GLOBAL -->
+  <button class="floating-contact" aria-label="Demande de devis" onclick="openDrawer()">
+    <picture>
+      <source srcset="images/form.avif" type="image/avif">
+      <source srcset="images/form.webp" type="image/webp">
+      <img src="images/form.webp" alt="" width="68" height="68">
+    </picture>
+  </button>
+
+  <!-- DRAWER (un seul panneau) -->
+  <aside class="contact-drawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <h2>Demande de devis</h2>
+        <button class="drawer-close" aria-label="Fermer" onclick="closeDrawer()">×</button>
+      </div>
+
+      <form action="https://formspree.io/f/your-id-here" method="POST" class="contact-form" autocomplete="on" data-formspree>
+        <label>Nom / Société*</label>
+        <input type="text" name="company" required>
+        <label>Email*</label>
+        <input type="email" name="email" required>
+        <label>Téléphone</label>
+        <input type="tel" name="phone">
+        <label>Message*</label>
+        <textarea name="message" rows="5" required placeholder="Type de locaux, surface, fréquence…"></textarea>
+        <button type="submit">Envoyer la demande</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </aside>
+
+  <script>
+    // Drawer
+    const drawer = document.querySelector('.contact-drawer');
+    function openDrawer(){ drawer.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+    function closeDrawer(){ drawer.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+    drawer.addEventListener('click', e => { if(e.target === drawer) closeDrawer(); });
+
+    // Formspree AJAX (message de succès inline)
+    document.querySelectorAll('form[data-formspree]').forEach(form=>{
+      const status = form.querySelector('.form-status');
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        status.textContent = 'Envoi en cours…';
+        try{
+          const r = await fetch(form.action, { method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form) });
+          if(r.ok){ form.reset(); status.textContent = '✅ Merci, votre message a bien été envoyé.'; }
+          else{ status.textContent = '⚠️ Une erreur est survenue. Réessayez.'; }
+        }catch{ status.textContent = '⚠️ Réseau indisponible. Réessayez.'; }
+      });
+    });
+  </script>
+</body>
+</html>

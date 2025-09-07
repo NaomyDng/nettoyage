@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact – Nettoyage Express</title>
+  <meta name="description" content="Contactez Nettoyage Express à Bruxelles pour un devis de nettoyage professionnel." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://formspree.io" crossorigin>
+</head>
+<body data-page="contact">
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <nav class="nav-left nav-links">
+      <a href="index.html#accueil">Accueil</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <a href="index.html#accueil" class="nav-logo" aria-label="Nettoyage Express">
+      <picture>
+        <source srcset="images/logo.avif" type="image/avif">
+        <source srcset="images/logo.webp" type="image/webp">
+        <img src="images/logo.webp" alt="Logo Nettoyage Express" width="44" height="44" />
+      </picture>
+    </a>
+    <div class="nav-right">
+      <a class="nav-phone" href="tel:+3224110911">+32&nbsp;2&nbsp;411&nbsp;09&nbsp;11</a>
+    </div>
+  </header>
+
+  <!-- CONTENU -->
+  <main class="reservation-page">
+    <h1 class="page-title">Contact</h1>
+
+    <section class="category">
+      <div class="contact-grid contact-grid-image">
+        <!-- Image à côté du formulaire -->
+        <div class="contact-illustration">
+          <picture>
+            <source srcset="images/contact.avif" type="image/avif">
+            <source srcset="images/contact.webp" type="image/webp">
+            <img src="images/contact.webp" alt="Nettoyage professionnel à Bruxelles" loading="lazy" width="1200" height="800">
+          </picture>
+        </div>
+
+        <form action="https://formspree.io/f/your-id-here" method="POST" class="contact-form" autocomplete="on" data-formspree>
+          <label>Nom / Société*</label>
+          <input type="text" name="company" required>
+          <label>Email*</label>
+          <input type="email" name="email" required>
+          <label>Téléphone</label>
+          <input type="tel" name="phone">
+          <label>Message*</label>
+          <textarea name="message" rows="6" required placeholder="Décrivez votre besoin : type de locaux, surface, fréquence souhaitée…"></textarea>
+          <button type="submit">Envoyer la demande</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p><strong>Nettoyage Express</strong> — Rue des Colombophiles, 133 • 1070 Bruxelles</p>
+      <p>Tel : <a href="tel:+3224110911">+32 2 411 09 11</a> • <a href="https://www.nettoyageexpress.be" target="_blank" rel="noopener">www.nettoyageexpress.be</a></p>
+      <p class="legal">
+        <a href="mentions-legales.html">Mentions légales</a> •
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- BOUTON FLOTTANT -->
+  <button class="floating-contact" aria-label="Demande de devis">
+    <picture>
+      <source srcset="images/form.avif" type="image/avif">
+      <source srcset="images/form.webp" type="image/webp">
+      <img src="images/form.webp" alt="" width="68" height="68">
+    </picture>
+  </button>
+
+  <!-- DRAWER -->
+  <aside class="contact-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <h2>Demande de devis</h2>
+      <button class="drawer-close" aria-label="Fermer">×</button>
+    </div>
+    <form action="https://formspree.io/f/your-id-here" method="POST" class="contact-form" autocomplete="on" data-formspree>
+      <label>Nom / Société*</label>
+      <input type="text" name="company" required>
+      <label>Email*</label>
+      <input type="email" name="email" required>
+      <label>Téléphone</label>
+      <input type="tel" name="phone">
+      <label>Message*</label>
+      <textarea name="message" rows="5" required></textarea>
+      <button type="submit">Envoyer la demande</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </aside>
+
+  <script>
+    /* Drawer */
+    const btn3 = document.querySelector('.floating-contact');
+    const drawer3 = document.querySelector('.contact-drawer');
+    const close3 = document.querySelector('.drawer-close');
+    const toggle3 = (o) => { drawer3.setAttribute('aria-hidden', o ? 'false' : 'true'); document.body.style.overflow = o ? 'hidden' : '' };
+    btn3.addEventListener('click', ()=>toggle3(true));
+    close3.addEventListener('click', ()=>toggle3(false));
+    drawer3.addEventListener('click', (e)=>{ if(e.target===drawer3) toggle3(false) });
+
+    /* Formspree AJAX */
+    document.querySelectorAll('form[data-formspree]').forEach(form=>{
+      const status = form.querySelector('.form-status');
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        status.textContent='Envoi en cours…';
+        try{
+          const r = await fetch(form.action, { method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form) });
+          if(r.ok){ form.reset(); status.textContent='✅ Merci, votre message a bien été envoyé.'; }
+          else{ status.textContent='⚠️ Une erreur est survenue. Réessayez.'; }
+        }catch{ status.textContent='⚠️ Réseau indisponible. Réessayez.'; }
+      });
+    });
+
+    /* Scroll inter-pages – chemins relatifs */
+    const order = ['index.html','services.html','contact.html'];
+    const currentPath = location.pathname.split('/').pop() || 'index.html';
+    const idx = order.indexOf(currentPath);
+    function goNext(){ if(idx>-1 && idx<order.length-1) location.href = order[idx+1]; }
+    function goPrev(){ if(idx>0) location.href = order[idx-1]; }
+
+    let lastY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const bottom = (window.innerHeight + window.scrollY) / document.documentElement.scrollHeight;
+      const top = window.scrollY;
+      if (bottom > 0.98) goNext();
+      if (top === 0 && lastY < 10) goPrev();
+      lastY = window.scrollY;
+    }, { passive:true });
+  </script>
+</body>
+</html>

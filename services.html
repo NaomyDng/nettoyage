@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services – Nettoyage Express</title>
+  <meta name="description" content="Nettoyage de sociétés, après chantier, semi-industriel à Bruxelles. Devis rapide." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://formspree.io" crossorigin>
+</head>
+<body data-page="services">
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <nav class="nav-left nav-links">
+      <a href="index.html#accueil">Accueil</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="index.html#accueil" class="nav-logo" aria-label="Nettoyage Express">
+      <picture>
+        <source srcset="images/logo.avif" type="image/avif">
+        <source srcset="images/logo.webp" type="image/webp">
+        <img src="images/logo.webp" alt="Logo Nettoyage Express" width="44" height="44" />
+      </picture>
+    </a>
+    <div class="nav-right">
+      <a class="nav-phone" href="tel:+3224110911">+32&nbsp;2&nbsp;411&nbsp;09&nbsp;11</a>
+    </div>
+  </header>
+
+  <!-- CONTENU -->
+  <main class="reservation-page">
+    <h1 class="page-title">Nos services</h1>
+
+    <!-- 3 tuiles côte à côte -->
+    <div class="cards cards-3">
+      <!-- Sociétés -->
+      <article class="card">
+        <picture>
+          <source srcset="images/societe.avif" type="image/avif">
+          <source srcset="images/societe.webp" type="image/webp">
+          <img src="images/societe.webp" alt="Nettoyage de sociétés (bureaux, commerces, showrooms, cliniques, écoles)" loading="lazy" width="900" height="600">
+        </picture>
+        <h3>Nettoyage de sociétés</h3>
+        <p>Bureaux, commerces, showrooms, cliniques & écoles. Entretien régulier, sols, vitres intérieures, protocoles adaptés.</p>
+        <button onclick="document.querySelector('.floating-contact').click()">Demander un devis</button>
+      </article>
+
+      <!-- Après chantier -->
+      <article class="card">
+        <picture>
+          <source srcset="images/chantier.avif" type="image/avif">
+          <source srcset="images/chantier.webp" type="image/webp">
+          <img src="images/chantier.webp" alt="Nettoyage après chantier" loading="lazy" width="900" height="600">
+        </picture>
+        <h3>Après chantier</h3>
+        <p>Remise en état : poussières fines, résidus, traces de plâtre/peinture, lavage de vitres et finitions.</p>
+        <button onclick="document.querySelector('.floating-contact').click()">Demander un devis</button>
+      </article>
+
+      <!-- Semi-industriel -->
+      <article class="card">
+        <picture>
+          <source srcset="images/indu.avif" type="image/avif">
+          <source srcset="images/indu.webp" type="image/webp">
+          <img src="images/indu.webp" alt="Nettoyage semi-industriel" loading="lazy" width="900" height="600">
+        </picture>
+        <h3>Semi-industriel</h3>
+        <p>Ateliers & petites unités : entretien renforcé des zones techniques, dégraissage, consignes de sécurité.</p>
+        <button onclick="document.querySelector('.floating-contact').click()">Demander un devis</button>
+      </article>
+    </div>
+
+    <p class="notice centered">(Important : nous ne faisons pas de nettoyage pour les particuliers)</p>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p><strong>Nettoyage Express</strong> — Rue des Colombophiles, 133 • 1070 Bruxelles</p>
+      <p>Tel : <a href="tel:+3224110911">+32 2 411 09 11</a> • <a href="https://www.nettoyageexpress.be" target="_blank" rel="noopener">www.nettoyageexpress.be</a></p>
+      <p class="legal">
+        <a href="mentions-legales.html">Mentions légales</a> •
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- BOUTON FLOTTANT → FORMULAIRE GLOBAL -->
+  <button class="floating-contact" aria-label="Demande de devis">
+    <picture>
+      <source srcset="images/form.avif" type="image/avif">
+      <source srcset="images/form.webp" type="image/webp">
+      <img src="images/form.webp" alt="" width="68" height="68">
+    </picture>
+  </button>
+
+  <!-- DRAWER -->
+  <aside class="contact-drawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <h2>Demande de devis</h2>
+        <button class="drawer-close" aria-label="Fermer">×</button>
+      </div>
+      <form action="https://formspree.io/f/your-id-here" method="POST" class="contact-form" autocomplete="on" data-formspree>
+        <label>Nom / Société*</label>
+        <input type="text" name="company" required>
+        <label>Email*</label>
+        <input type="email" name="email" required>
+        <label>Téléphone</label>
+        <input type="tel" name="phone">
+        <label>Message*</label>
+        <textarea name="message" rows="5" required></textarea>
+        <button type="submit">Envoyer la demande</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </aside>
+
+  <script>
+    /* Drawer */
+    const btn2 = document.querySelector('.floating-contact');
+    const drawer2 = document.querySelector('.contact-drawer');
+    const close2 = document.querySelector('.drawer-close');
+    const toggle2 = (o) => { drawer2.setAttribute('aria-hidden', o ? 'false' : 'true'); document.body.style.overflow = o ? 'hidden' : '' };
+    btn2.addEventListener('click', ()=>toggle2(true));
+    close2.addEventListener('click', ()=>toggle2(false));
+    drawer2.addEventListener('click', (e)=>{ if(e.target===drawer2) toggle2(false) });
+
+    /* Formspree AJAX */
+    document.querySelectorAll('form[data-formspree]').forEach(form=>{
+      const status = form.querySelector('.form-status');
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        status.textContent='Envoi en cours…';
+        try{
+          const r = await fetch(form.action, { method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form) });
+          if(r.ok){ form.reset(); status.textContent='✅ Merci, votre message a bien été envoyé.'; }
+          else{ status.textContent='⚠️ Une erreur est survenue. Réessayez.'; }
+        }catch{ status.textContent='⚠️ Réseau indisponible. Réessayez.'; }
+      });
+    });
+
+    /* Scroll inter-pages – chemins relatifs */
+    const order = ['index.html','services.html','contact.html'];
+    const currentPath = location.pathname.split('/').pop() || 'index.html';
+    const idx = order.indexOf(currentPath);
+    function goNext(){ if(idx>-1 && idx<order.length-1) location.href = order[idx+1]; }
+    function goPrev(){ if(idx>0) location.href = order[idx-1]; }
+
+    let lastY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const bottom = (window.innerHeight + window.scrollY) / document.documentElement.scrollHeight;
+      const top = window.scrollY;
+      if (bottom > 0.98) goNext();
+      if (top === 0 && lastY < 10) goPrev();
+      lastY = window.scrollY;
+    }, { passive:true });
+  </script>
+</body>
+</html>

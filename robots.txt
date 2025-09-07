@@ -1,0 +1,5 @@
+# robots.txt - Nettoyage Express
+User-agent: *
+Allow: /
+
+Sitemap: https://www.nettoyageexpress.be/sitemap.xml
