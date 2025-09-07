@@ -5,8 +5,7 @@ body{font-family:"Helvetica Neue",system-ui,-apple-system,Segoe UI,Roboto,Arial,
 img{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 :root{
-  --blue-main:#0A2A66;        /* bleu titre */
-  --green-accent:#1E9E51;     /* vert identité */
+  --blue-main:#0A2A66;        /* bleu titre (logo) */
   --text:#0A2A66;
   --text-light:#4A5A86;
   --bg:#ffffff;
@@ -28,8 +27,8 @@ a{color:inherit;text-decoration:none}
   color:var(--text);font-size:.9rem;letter-spacing:.6px;text-transform:uppercase;
   padding-bottom:2px;border-bottom:2px solid transparent;transition:.2s
 }
-.nav-links a:hover,.nav-links a.active{color:var(--green-accent);border-bottom-color:var(--green-accent)}
-.nav-phone{color:var(--green-accent);font-weight:700}
+.nav-links a:hover,.nav-links a.active{color:var(--blue-main);border-bottom-color:var(--blue-main)}
+.nav-phone{color:var(--blue-main);font-weight:700}
 
 /* Logo navbar */
 .nav-logo{
@@ -53,10 +52,13 @@ a{color:inherit;text-decoration:none}
 .hero-center{position:relative;z-index:2}
 .hero-center .cta-button{
   display:inline-block;padding:14px 28px;border-radius:10px;
-  background:var(--green-accent);color:#fff;border:2px solid var(--green-accent);
+  background:var(--blue-main);color:#fff;border:2px solid var(--blue-main);
   font-weight:800;text-transform:uppercase;letter-spacing:.6px;transition:.25s
 }
-.hero-center .cta-button:hover{background:#fff;color:var(--green-accent);border-color:var(--green-accent)}
+.hero-center .cta-button:hover{background:#fff;color:var(--blue-main);border-color:var(--blue-main)}
+
+/* Numéro (caché par défaut → visible seulement en mobile) */
+.phone-chip-mobile{display:none}
 
 /* Slogan bas gauche */
 .slogan{
@@ -102,7 +104,7 @@ a{color:inherit;text-decoration:none}
 .card h3{font-size:1.1rem;margin-bottom:8px;color:var(--blue-main)}
 .card p{color:var(--text-light);font-size:.98rem;margin-bottom:14px}
 .card button{
-  width:100%;padding:12px;background:var(--green-accent);color:#fff;border:none;border-radius:10px;
+  width:100%;padding:12px;background:var(--blue-main);color:#fff;border:none;border-radius:10px;
   text-transform:uppercase;font-weight:800;letter-spacing:.5px;cursor:pointer;transition:.15s
 }
 .card button:hover{transform:translateY(-1px);opacity:.96}
@@ -113,7 +115,7 @@ a{color:inherit;text-decoration:none}
 .contact-illustration picture,.contact-illustration img{width:100%;border-radius:14px}
 
 .contact-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
-.contact-card a{color:var(--green-accent)}
+.contact-card a{color:var(--blue-main)}
 
 .contact-form{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px}
 .contact-form label{display:block;font-weight:700;margin-bottom:6px;color:var(--text);font-size:.95rem}
@@ -121,7 +123,7 @@ a{color:inherit;text-decoration:none}
   width:100%;padding:10px 12px;margin-bottom:12px;border:1px solid var(--border);border-radius:10px;outline:none
 }
 .contact-form button{
-  width:100%;padding:12px;background:var(--green-accent);color:#fff;border:none;border-radius:10px;
+  width:100%;padding:12px;background:var(--blue-main);color:#fff;border:none;border-radius:10px;
   text-transform:uppercase;font-weight:800;letter-spacing:.5px;cursor:pointer
 }
 .form-status{margin-top:8px;font-size:.95rem;color:var(--blue-main)}
@@ -129,7 +131,7 @@ a{color:inherit;text-decoration:none}
 /* ===== FOOTER ===== */
 .site-footer{border-top:1px solid var(--border);background:#fff}
 .site-footer .footer-inner{max-width:1100px;margin:0 auto;padding:20px;text-align:center;color:var(--text)}
-.site-footer .legal a{color:var(--green-accent)}
+.site-footer .legal a{color:var(--blue-main)}
 
 /* ===== WIDGET FORMULAIRE GLOBAL ===== */
 .floating-contact{
@@ -155,132 +157,84 @@ a{color:inherit;text-decoration:none}
   flex:1;overflow:auto;border:none;border-radius:0;padding:16px;background:#fff
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width:599px){
-  .navbar{height:68px}
-  .nav-logo{width:140px;height:64px;transform:translateY(-4px)}
-  .nav-logo img{width:130px}
-  .slogan{bottom:20px;left:10px;font-size:1.3rem}
-  .hero-center .cta-button{padding:12px 22px}
-  .card picture,.card img{height:220px}    /* un peu moins haut en mobile */
-}
+/* --- TABLET ≥768px (inchangé) --- */
 @media (min-width:768px){
   .nav-links{display:flex}
   .page-title{font-size:1.9rem}
-  .category h2{font-size:1.2rem}
   .cards-3{grid-template-columns:repeat(2,1fr)}
   .contact-grid{grid-template-columns:1fr 1fr}
 }
+
+/* --- DESKTOP LARGE ≥1100px (inchangé) --- */
 @media (min-width:1100px){
   .cards-3{grid-template-columns:repeat(3,1fr)}
   .slogan{font-size:2.1rem}
 }
-/* ===== MOBILE-ONLY FIXES ===== */
-@media (max-width: 599px){
-  /* 1) CONTACT : masquer l'image à côté du formulaire */
-  .contact-grid-image .contact-illustration{
-    display: none;
-  }
 
-  /* 2) HERO : montrer toute l'image, pas de recadrage moche */
-  .hero{ 
-    min-height: 92vh;           /* un peu + haut pour respirer */
-    padding-top: 72px;
-  }
-  .hero .hero-bg img{
-    object-fit: contain;        /* image entière visible */
-    background: #fff;           /* fond propre autour si ratio différent */
-  }
-
-  /* CTA un poil plus compact et centré */
-  .hero-center .cta-button{
-    padding: 12px 22px;
-    font-size: 0.95rem;
-  }
-
-  /* Slogan : un peu plus petit et bien calé */
-  .slogan{
-    bottom: 18px;
-    left: 12px; 
-    right: 12px;                /* évite que ça touche le bord droit */
-    font-size: 1.2rem;
-    line-height: 1.25;
-  }
-}
-/* ===== MOBILE HERO REFINEMENT ===== */
-@media (max-width: 599px){
-  /* HERO : garder un max d’image, réduire bandes blanches */
-  .hero .hero-bg img{
-    object-fit: contain;
-    object-position: center;
-    background: #fff;
-    max-height: 100vh;        /* ne pas déborder */
-    width: 100%;
-  }
-
-  /* Slogan : passe en vert si fond clair visible */
-  .slogan{
-    color: var(--green-accent);   /* vert identité */
-    text-shadow: none;            /* pas d'ombre sur blanc */
-    font-weight: 700;
-  }
-}
-/* ===== MOBILE: HERO FLUSH UNDER NAVBAR, NO TOP WHITE ===== */
-/* ===== MOBILE: HERO avec bouton centré réduit, slogan en dessous ===== */
+/* ===== MOBILE: HERO ajusté (version validée) ===== */
 @media (max-width:599px){
   /* NAVBAR */
   .navbar{height:68px}
   .nav-logo{width:140px;height:64px;transform:translateY(-4px)}
   .nav-logo img{width:130px}
 
-  /* HERO */
+  /* HERO collé sous la nav, image entière alignée haut */
   .hero{
     padding-top:0;
-    margin-top:68px;          /* colle juste sous la navbar */
-    min-height:85vh;          /* hauteur immersive */
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    overflow:hidden;
-    background:#fff;
-    text-align:center;
+    margin-top:68px;          /* colle sous la navbar */
+    min-height:auto;          /* pas de vh forcé */
+    display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;background:#fff;text-align:center;
   }
-  .hero .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero .hero-bg{position:relative;inset:auto;z-index:0}
   .hero .hero-bg img{
-    width:100%;height:100%;
-    object-fit:contain;        /* image entière visible */
-    object-position:top center;/* collée en haut */
+    width:100%;height:auto;
+    object-fit:contain;       /* image entière visible */
+    object-position:top;      /* alignée en haut */
     display:block;
   }
 
-  /* Bouton au centre du hero (comme desktop) mais réduit */
+  /* CTA centré (réduit) */
   .hero-center{
-    position:relative;
-    z-index:2;
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;
   }
   .hero-center .cta-button{
-    padding:8px 18px;          /* plus compact */
-    font-size:0.85rem;         /* plus petit texte */
-    border-radius:8px;
+    padding:10px 22px;font-size:0.9rem;border-radius:8px;
+    background:var(--blue-main);border-color:var(--blue-main);color:#fff;
+  }
+/* Desktop / tablette : garder le haut visible, recadrer vers le bas */
+@media (min-width:600px){
+  .hero .hero-bg img{
+    object-position: top center; /* ou: 50% 0 */
+  }
+}
+
+  /* Numéro affiché en mobile sur bouton blanc */
+  .phone-chip-mobile{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:8px 12px;border-radius:999px;border:1px solid #cfe0ff;
+    background:#fff;color:var(--blue-main);font-weight:800;
+    box-shadow:0 6px 20px rgba(10,42,102,.10);
   }
 
-  /* Slogan sort du hero → s'affiche en dessous sur fond blanc */
-  .slogan{
-    position:static;
-    margin:0;
-    padding:10px 16px 14px;
-    background:#fff;
-    color:var(--green-accent);
-    text-shadow:none;
-    font-weight:700;
-    font-size:1.1rem;
-    line-height:1.3;
-    text-align:center;
-  }
+  /* Slogan désactivé en mobile */
+  .slogan{display:none;}
 
-  /* Réduction de l'espace entre sections */
-  .section-compact{padding-top:36px;padding-bottom:40px}
-  .section-compact-below{padding-top:28px;padding-bottom:32px}
-  .page-title{margin-bottom:20px}
+  /* Contact : cacher l’image en mobile */
+  .contact-grid-image .contact-illustration{display:none}
+}
+/* Desktop : ne coupe plus en haut (hero sous la navbar) */
+@media (min-width:600px){
+  .hero{
+    padding-top: 0;                 /* on enlève la cause du crop */
+    margin-top: 72px;               /* on pousse le hero sous la nav */
+    min-height: calc(100vh - 72px); /* garde le plein écran net */
+  }
+  .hero .hero-bg{ position:absolute; inset:0; }
+  .hero .hero-bg img{
+    width:100%; height:100%;
+    object-fit: cover;              /* plein écran */
+    object-position: top center;    /* s’il faut recadrer → vers le bas */
+  }
 }
