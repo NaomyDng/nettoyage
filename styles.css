@@ -175,3 +175,35 @@ a{color:inherit;text-decoration:none}
   .cards-3{grid-template-columns:repeat(3,1fr)}
   .slogan{font-size:2.1rem}
 }
+/* ===== MOBILE-ONLY FIXES ===== */
+@media (max-width: 599px){
+  /* 1) CONTACT : masquer l'image à côté du formulaire */
+  .contact-grid-image .contact-illustration{
+    display: none;
+  }
+
+  /* 2) HERO : montrer toute l'image, pas de recadrage moche */
+  .hero{ 
+    min-height: 92vh;           /* un peu + haut pour respirer */
+    padding-top: 72px;
+  }
+  .hero .hero-bg img{
+    object-fit: contain;        /* image entière visible */
+    background: #fff;           /* fond propre autour si ratio différent */
+  }
+
+  /* CTA un poil plus compact et centré */
+  .hero-center .cta-button{
+    padding: 12px 22px;
+    font-size: 0.95rem;
+  }
+
+  /* Slogan : un peu plus petit et bien calé */
+  .slogan{
+    bottom: 18px;
+    left: 12px; 
+    right: 12px;                /* évite que ça touche le bord droit */
+    font-size: 1.2rem;
+    line-height: 1.25;
+  }
+}
