@@ -225,37 +225,38 @@ a{color:inherit;text-decoration:none}
     font-weight: 700;
   }
 }
-/* ===== MOBILE HERO (image contain avec bandes réduites) ===== */
-@media (max-width: 599px){
+/* ===== MOBILE: HERO FLUSH UNDER NAVBAR, NO TOP WHITE ===== */
+@media (max-width:599px){
+  /* Le visuel démarre directement sous la navbar */
   .hero{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-top:0;            /* supprime l’espace ajouté pour la navbar */
+    min-height:100vh;         /* on garde la même hauteur visuelle */
   }
 
   .hero .hero-bg img{
-    object-fit: contain;     /* image entière, pas coupée */
-    object-position: center; /* centrée verticalement et horizontalement */
-    height: 95vh;            /* occupe 95% de la hauteur de l’écran */
-    width: auto;             /* largeur ajustée automatiquement */
-    margin: auto;            /* centre l’image */
-    background: #fff;        /* le petit espace restant reste blanc */
+    width:100%;
+    height:100vh;             /* remplit toute la hauteur de l'écran */
+    object-fit:cover;         /* plus de bandes blanches */
+    object-position:center;   /* centré proprement */
+    background:transparent;   /* pas de fond blanc derrière */
   }
 
-  /* Slogan : reste bien lisible en vert */
-  .slogan{
-    color: var(--green-accent);
-    text-shadow: none;
+  /* Décale légèrement le contenu centré pour éviter qu'il passe sous la navbar */
+  .hero-center{
+    margin-top:68px;          /* hauteur de la navbar */
   }
-}
-/* ===== MOBILE HERO REMONTÉ ===== */
-@media (max-width: 599px){
-  .hero{
-    padding-top: -10px;  /* avant 72px, réduit pour rapprocher du haut */
+
+  /* Le slogan ne flotte plus sur la photo en mobile */
+  .slogan{ display:none; }
+
+  /* Slogan sous le hero, sur fond blanc (version mobile uniquement) */
+  .slogan-below{
+    display:block;
+    padding:10px 16px 14px;
+    background:#fff;
+    color:var(--green-accent);
+    font-weight:700;
+    text-align:center;
+    line-height:1.25;
   }
-}
-/* Switch mobile */
-@media (max-width:599px){
-  .slogan-desktop{display:none;}
-  .slogan-below{display:block;}
 }
