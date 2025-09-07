@@ -187,10 +187,7 @@ a{color:inherit;text-decoration:none}
     min-height: 92vh;           /* un peu + haut pour respirer */
     padding-top: 72px;
   }
-  .hero .hero-bg img{
-    object-fit: contain;        /* image entière visible */
-    background: #fff;           /* fond propre autour si ratio différent */
-  }
+ .hero .hero-bg img{ object-fit: cover; object-position: center 30%; }
 
   /* CTA un poil plus compact et centré */
   .hero-center .cta-button{
