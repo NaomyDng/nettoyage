@@ -225,19 +225,26 @@ a{color:inherit;text-decoration:none}
     font-weight: 700;
   }
 }
-/* ===== MOBILE HERO FULL IMAGE (pas de bandes blanches) ===== */
+/* ===== MOBILE HERO (image contain avec bandes réduites) ===== */
 @media (max-width: 599px){
-  .hero .hero-bg img{
-    object-fit: cover;       /* l’image couvre toute la hauteur/largeur */
-    object-position: center; /* centrer l’image (ajuste si besoin: top/30% etc.) */
-    width: 100%;
-    height: 100%;
+  .hero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  /* Slogan : reste en blanc pour contraste sur l’image */
+  .hero .hero-bg img{
+    object-fit: contain;     /* image entière, pas coupée */
+    object-position: center; /* centrée verticalement et horizontalement */
+    height: 95vh;            /* occupe 95% de la hauteur de l’écran */
+    width: auto;             /* largeur ajustée automatiquement */
+    margin: auto;            /* centre l’image */
+    background: #fff;        /* le petit espace restant reste blanc */
+  }
+
+  /* Slogan : reste bien lisible en vert */
   .slogan{
-    color: #ffffff;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.4); /* pour être lisible sur photo */
+    color: var(--green-accent);
+    text-shadow: none;
   }
 }
-
