@@ -248,3 +248,9 @@ a{color:inherit;text-decoration:none}
     text-shadow: none;
   }
 }
+/* ===== MOBILE HERO REMONTÉ ===== */
+@media (max-width: 599px){
+  .hero{
+    padding-top: 10px;  /* avant 72px, réduit pour rapprocher du haut */
+  }
+}
