@@ -226,37 +226,61 @@ a{color:inherit;text-decoration:none}
   }
 }
 /* ===== MOBILE: HERO FLUSH UNDER NAVBAR, NO TOP WHITE ===== */
+/* ===== MOBILE: HERO avec bouton centré réduit, slogan en dessous ===== */
 @media (max-width:599px){
-  /* Le visuel démarre directement sous la navbar */
+  /* NAVBAR */
+  .navbar{height:68px}
+  .nav-logo{width:140px;height:64px;transform:translateY(-4px)}
+  .nav-logo img{width:130px}
+
+  /* HERO */
   .hero{
-    padding-top:0;            /* supprime l’espace ajouté pour la navbar */
-    min-height:100vh;         /* on garde la même hauteur visuelle */
+    padding-top:0;
+    margin-top:68px;          /* colle juste sous la navbar */
+    min-height:85vh;          /* hauteur immersive */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    background:#fff;
+    text-align:center;
   }
-
+  .hero .hero-bg{position:absolute;inset:0;z-index:0}
   .hero .hero-bg img{
-    width:100%;
-    height:100vh;             /* remplit toute la hauteur de l'écran */
-    object-fit:cover;         /* plus de bandes blanches */
-    object-position:center;   /* centré proprement */
-    background:transparent;   /* pas de fond blanc derrière */
-  }
-
-  /* Décale légèrement le contenu centré pour éviter qu'il passe sous la navbar */
-  .hero-center{
-    margin-top:68px;          /* hauteur de la navbar */
-  }
-
-  /* Le slogan ne flotte plus sur la photo en mobile */
-  .slogan{ display:none; }
-
-  /* Slogan sous le hero, sur fond blanc (version mobile uniquement) */
-  .slogan-below{
+    width:100%;height:100%;
+    object-fit:contain;        /* image entière visible */
+    object-position:top center;/* collée en haut */
     display:block;
+  }
+
+  /* Bouton au centre du hero (comme desktop) mais réduit */
+  .hero-center{
+    position:relative;
+    z-index:2;
+  }
+  .hero-center .cta-button{
+    padding:8px 18px;          /* plus compact */
+    font-size:0.85rem;         /* plus petit texte */
+    border-radius:8px;
+  }
+
+  /* Slogan sort du hero → s'affiche en dessous sur fond blanc */
+  .slogan{
+    position:static;
+    margin:0;
     padding:10px 16px 14px;
     background:#fff;
     color:var(--green-accent);
+    text-shadow:none;
     font-weight:700;
+    font-size:1.1rem;
+    line-height:1.3;
     text-align:center;
-    line-height:1.25;
   }
+
+  /* Réduction de l'espace entre sections */
+  .section-compact{padding-top:36px;padding-bottom:40px}
+  .section-compact-below{padding-top:28px;padding-bottom:32px}
+  .page-title{margin-bottom:20px}
 }
